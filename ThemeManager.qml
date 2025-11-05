@@ -35,7 +35,7 @@ Item {
             "mainColorSemiOpaque": {
                 "group": "Brand",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Hauptfarbe (halbtransparent)",
@@ -50,7 +50,7 @@ Item {
             "mainOverlayColor": {
                 "group": "Brand",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Haupt-Overlay-Farbe",
@@ -65,7 +65,7 @@ Item {
             "accentColor": {
                 "group": "Brand",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Akzentfarbe",
@@ -80,7 +80,7 @@ Item {
             "accentLightColor": {
                 "group": "Brand",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Akzentfarbe (hell)",
@@ -97,7 +97,7 @@ Item {
             "mainBackgroundColor": {
                 "group": "Background",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Haupt-Hintergrund",
@@ -112,7 +112,7 @@ Item {
             "mainBackgroundColorSemiOpaque": {
                 "group": "Background",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Haupt-Hintergrund (halbtransparent)",
@@ -127,7 +127,7 @@ Item {
             "groupBoxBackgroundColor": {
                 "group": "Background",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Gruppenfeld-Hintergrund",
@@ -142,7 +142,7 @@ Item {
             "groupBoxSurfaceColor": {
                 "group": "Background",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Gruppenfeld-Oberfläche",
@@ -157,7 +157,7 @@ Item {
             "sensorBackgroundColor": {
                 "group": "Background",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Sensor-Hintergrund",
@@ -174,7 +174,7 @@ Item {
             "mainTextColor": {
                 "group": "Text",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Haupt-Textfarbe",
@@ -189,7 +189,7 @@ Item {
             "mainTextDisabledColor": {
                 "group": "Text",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Text (deaktiviert)",
@@ -204,7 +204,7 @@ Item {
             "secondaryTextColor": {
                 "group": "Text",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Sekundärtext",
@@ -219,7 +219,7 @@ Item {
             "buttonTextColor": {
                 "group": "Text",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Schaltflächentext",
@@ -236,7 +236,7 @@ Item {
             "controlBackgroundColor": {
                 "group": "Controls",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Steuerelement-Hintergrund",
@@ -251,7 +251,7 @@ Item {
             "controlBackgroundAlternateColor": {
                 "group": "Controls",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Steuerelement-Hintergrund (alternativ)",
@@ -266,7 +266,7 @@ Item {
             "controlBackgroundDisabledColor": {
                 "group": "Controls",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Steuerelement-Hintergrund (deaktiviert)",
@@ -281,7 +281,7 @@ Item {
             "controlBorderColor": {
                 "group": "Controls",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Steuerelement-Rahmen",
@@ -296,7 +296,7 @@ Item {
             "toolButtonColor": {
                 "group": "Controls",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Werkzeugschaltfläche (Vordergrund)",
@@ -311,7 +311,7 @@ Item {
             "toolButtonBackgroundColor": {
                 "group": "Controls",
                 "expose": false,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Werkzeugschaltfläche (Hintergrund)",
@@ -326,7 +326,7 @@ Item {
             "toolButtonBackgroundSemiOpaqueColor": {
                 "group": "Controls",
                 "expose": false,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Werkzeugschaltfläche (Hintergrund, halbtransparent)",
@@ -341,7 +341,7 @@ Item {
             "scrollBarBackgroundColor": {
                 "group": "Controls",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Scrollbar-Hintergrund",
@@ -358,7 +358,7 @@ Item {
             "darkRed": {
                 "group": "Palette",
                 "expose": false,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Dunkelrot",
@@ -373,7 +373,7 @@ Item {
             "darkGray": {
                 "group": "Palette",
                 "expose": false,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Dunkelgrau",
@@ -388,7 +388,7 @@ Item {
             "darkGraySemiOpaque": {
                 "group": "Palette",
                 "expose": false,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Dunkelgrau (halbtransparent)",
@@ -403,7 +403,7 @@ Item {
             "gray": {
                 "group": "Palette",
                 "expose": false,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Grau",
@@ -418,7 +418,7 @@ Item {
             "lightGray": {
                 "group": "Palette",
                 "expose": false,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Hellgrau",
@@ -433,7 +433,7 @@ Item {
             "lightestGray": {
                 "group": "Palette",
                 "expose": false,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Sehr helles Grau",
@@ -448,7 +448,7 @@ Item {
             "lightestGraySemiOpaque": {
                 "group": "Palette",
                 "expose": false,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Sehr helles Grau (halbtransparent)",
@@ -463,7 +463,7 @@ Item {
             "light": {
                 "group": "Palette",
                 "expose": false,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Weiß",
@@ -480,7 +480,7 @@ Item {
             "errorColor": {
                 "group": "Status",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Fehler",
@@ -495,7 +495,7 @@ Item {
             "warningColor": {
                 "group": "Status",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Warnung",
@@ -510,7 +510,7 @@ Item {
             "cloudColor": {
                 "group": "Status",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Cloud",
@@ -527,7 +527,7 @@ Item {
             "positionColor": {
                 "group": "Position",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Position",
@@ -542,7 +542,7 @@ Item {
             "positionColorSemiOpaque": {
                 "group": "Position",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Position (halbtransparent)",
@@ -557,7 +557,7 @@ Item {
             "positionBackgroundColor": {
                 "group": "Position",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Positionshintergrund",
@@ -572,7 +572,7 @@ Item {
             "darkPositionColor": {
                 "group": "Position",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Position (dunkel)",
@@ -587,7 +587,7 @@ Item {
             "darkPositionColorSemiOpaque": {
                 "group": "Position",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Position (dunkel, halbtransparent)",
@@ -602,7 +602,7 @@ Item {
             "accuracyBad": {
                 "group": "Position",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Genauigkeit – schlecht",
@@ -617,7 +617,7 @@ Item {
             "accuracyTolerated": {
                 "group": "Position",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Genauigkeit – toleriert",
@@ -632,7 +632,7 @@ Item {
             "accuracyExcellent": {
                 "group": "Position",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Genauigkeit – hervorragend",
@@ -649,7 +649,7 @@ Item {
             "navigationColor": {
                 "group": "Navigation",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Navigation",
@@ -664,7 +664,7 @@ Item {
             "navigationColorSemiOpaque": {
                 "group": "Navigation",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Navigation (halbtransparent)",
@@ -679,7 +679,7 @@ Item {
             "navigationBackgroundColor": {
                 "group": "Navigation",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Navigationshintergrund",
@@ -696,7 +696,7 @@ Item {
             "bookmarkDefault": {
                 "group": "Bookmarks",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Lesezeichen – Standard",
@@ -711,7 +711,7 @@ Item {
             "bookmarkOrange": {
                 "group": "Bookmarks",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Lesezeichen – Orange",
@@ -726,7 +726,7 @@ Item {
             "bookmarkRed": {
                 "group": "Bookmarks",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Lesezeichen – Rot",
@@ -741,7 +741,7 @@ Item {
             "bookmarkBlue": {
                 "group": "Bookmarks",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Lesezeichen – Blau",
@@ -758,7 +758,7 @@ Item {
             "vertexColor": {
                 "group": "Editing",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Stützpunkt",
@@ -773,7 +773,7 @@ Item {
             "vertexColorSemiOpaque": {
                 "group": "Editing",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Stützpunkt (halbtransparent)",
@@ -788,7 +788,7 @@ Item {
             "vertexSelectedColor": {
                 "group": "Editing",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Stützpunkt – ausgewählt",
@@ -803,7 +803,7 @@ Item {
             "vertexSelectedColorSemiOpaque": {
                 "group": "Editing",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Stützpunkt – ausgewählt (halbtransparent)",
@@ -818,7 +818,7 @@ Item {
             "vertexNewColor": {
                 "group": "Editing",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Stützpunkt – neu",
@@ -833,7 +833,7 @@ Item {
             "vertexNewColorSemiOpaque": {
                 "group": "Editing",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Stützpunkt – neu (halbtransparent)",
@@ -848,7 +848,7 @@ Item {
             "processingPreview": {
                 "group": "Editing",
                 "expose": true,
-                "showDescription": true,
+                "showDescription": false,
                 "translations": {
                     "de": {
                         "name": "Verarbeitungs‑Vorschau",
@@ -918,6 +918,32 @@ Item {
         var e = exposedColorConfig[k];
         return e && e.expose === true;
     })
+
+    property var colorGroups: {
+        var cfg = exposedColorConfig || {};
+        var keys = colorKeys || [];
+        var order = [];
+        var groups = {};
+        for (var i = 0; i < keys.length; ++i) {
+            var key = keys[i];
+            var entry = cfg[key] || {};
+            var groupName = entry.group || qsTr("Other");
+            if (!groups[groupName]) {
+                groups[groupName] = [];
+                order.push(groupName);
+            }
+            groups[groupName].push(key);
+        }
+        var result = [];
+        for (var j = 0; j < order.length; ++j) {
+            var groupKey = order[j];
+            result.push({
+                name: groupKey,
+                keys: groups[groupKey]
+            });
+        }
+        return result;
+    }
 
     function keyToLabel(key) {
         return ((themeManager.colorTranslation && themeManager.colorTranslation(key)) || {
@@ -1057,7 +1083,7 @@ Item {
                 }
             }
 
-            // generate line for each exposed color
+            // generate grouped lines for each exposed color
             Flickable {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
@@ -1068,111 +1094,134 @@ Item {
                 Column {
                     id: colorList
                     width: parent.width
-                    spacing: 6
+                    spacing: 12
                     Repeater {
-                        id: colorsRepeater
-                        model: themeManager.colorKeys
-                        delegate: Item {
-                            id: colorRowRoot
-                            required property int index
-                            property string key: themeManager.colorKeys[index]
-                            property string label: themeManager.keyToLabel(key)
-                            property string currentColorStr: themeManager.colorToString(themeManager.readTheme(key))
-                            property color colorObj: currentColorStr
-
+                        id: colorGroupsRepeater
+                        model: themeManager.colorGroups
+                        delegate: Column {
+                            id: groupSection
+                            required property var modelData
+                            property var groupData: modelData
                             width: parent ? parent.width : 0
-                            height: columnLayout.implicitHeight
+                            spacing: 6
 
-                            ColumnLayout {
-                                id: columnLayout
-                                anchors.left: parent.left
-                                anchors.right: parent.right
-                                spacing: 4
+                            Label {
+                                text: groupSection.groupData.name
+                                color: Theme.secondaryTextColor
+                                font.bold: true
+                                font.pixelSize: 14
+                            }
 
-                                // First row: color swatch + name
-                                RowLayout {
-                                    Layout.fillWidth: true
-                                    spacing: 8
+                            Column {
+                                id: groupColors
+                                width: parent.width
+                                spacing: 6
+                                Repeater {
+                                    model: groupSection.groupData.keys
+                                    delegate: Item {
+                                        id: colorRowRoot
+                                        required property int index
+                                        property string key: groupSection.groupData.keys[index]
+                                        property string label: themeManager.keyToLabel(key)
+                                        property string currentColorStr: themeManager.colorToString(themeManager.readTheme(key))
+                                        property color colorObj: currentColorStr
 
-                                    Rectangle {
-                                        radius: 4
-                                        color: colorRowRoot.currentColorStr
-                                        border.color: Theme.controlBorderColor
-                                        Layout.preferredWidth: 28
-                                        Layout.preferredHeight: 28
-                                        MouseArea {
-                                            anchors.fill: parent
-                                            onClicked: colorDialog.open()
-                                        }
-                                    }
+                                        width: parent ? parent.width : 0
+                                        height: columnLayout.implicitHeight
 
-                                    Label {
-                                        text: colorRowRoot.label
-                                        color: Theme.mainTextColor
-                                        Layout.fillWidth: true
-                                        elide: Text.ElideRight
-                                    }
-                                }
+                                        ColumnLayout {
+                                            id: columnLayout
+                                            anchors.left: parent.left
+                                            anchors.right: parent.right
+                                            spacing: 4
 
-                                // Second row: text field + pick button
-                                RowLayout {
-                                    Layout.fillWidth: true
-                                    spacing: 4
-                                    // Height fits tallest control in the row
-                                    Layout.preferredHeight: Math.max(hexField.implicitHeight, pickButton.implicitHeight)
+                                            // First row: color swatch + name
+                                            RowLayout {
+                                                Layout.fillWidth: true
+                                                spacing: 8
 
-                                    TextField {
-                                        id: hexField
-                                        Layout.fillWidth: true
-                                        Layout.minimumWidth: 0
-                                        text: colorRowRoot.currentColorStr
-                                        color: Theme.mainTextColor
-                                        placeholderText: "#RRGGBB"
-                                        placeholderTextColor: Theme.secondaryTextColor
-                                        selectionColor: Theme.accentColor
-                                        selectedTextColor: Theme.light
-                                        implicitWidth: 0
-                                        onAccepted: {
-                                            if (text && text.length > 0) {
-                                                // Do not assign to currentColorStr to preserve its binding to Theme
-                                                themeManagerSettings.setColor(colorRowRoot.key, text);
-                                                Theme.applyColors(themeManagerSettings.customColors);
+                                                Rectangle {
+                                                    radius: 4
+                                                    color: colorRowRoot.currentColorStr
+                                                    border.color: Theme.controlBorderColor
+                                                    Layout.preferredWidth: 28
+                                                    Layout.preferredHeight: 28
+                                                    MouseArea {
+                                                        anchors.fill: parent
+                                                        onClicked: colorDialog.open()
+                                                    }
+                                                }
+
+                                                Label {
+                                                    text: colorRowRoot.label
+                                                    color: Theme.mainTextColor
+                                                    Layout.fillWidth: true
+                                                    elide: Text.ElideRight
+                                                }
+                                            }
+
+                                            // Second row: text field + pick button
+                                            RowLayout {
+                                                Layout.fillWidth: true
+                                                spacing: 4
+                                                // Height fits tallest control in the row
+                                                Layout.preferredHeight: Math.max(hexField.implicitHeight, pickButton.implicitHeight)
+
+                                                TextField {
+                                                    id: hexField
+                                                    Layout.fillWidth: true
+                                                    Layout.minimumWidth: 0
+                                                    text: colorRowRoot.currentColorStr
+                                                    color: Theme.mainTextColor
+                                                    placeholderText: "#RRGGBB"
+                                                    placeholderTextColor: Theme.secondaryTextColor
+                                                    selectionColor: Theme.accentColor
+                                                    selectedTextColor: Theme.light
+                                                    implicitWidth: 0
+                                                    onAccepted: {
+                                                        if (text && text.length > 0) {
+                                                            // Do not assign to currentColorStr to preserve its binding to Theme
+                                                            themeManagerSettings.setColor(colorRowRoot.key, text);
+                                                            Theme.applyColors(themeManagerSettings.customColors);
+                                                        }
+                                                    }
+                                                    onEditingFinished: {
+                                                        if (text && text.length > 0) {
+                                                            // Do not assign to currentColorStr to preserve its binding to Theme
+                                                            themeManagerSettings.setColor(colorRowRoot.key, text);
+                                                            Theme.applyColors(themeManagerSettings.customColors);
+                                                        }
+                                                    }
+                                                    background: Rectangle {
+                                                        implicitWidth: 0
+                                                        radius: 4
+                                                        color: Theme.controlBackgroundColor
+                                                        border.color: Theme.controlBorderColor
+                                                    }
+                                                }
+
+                                                Button {
+                                                    id: pickButton
+                                                    text: "Pick"
+                                                    Layout.preferredWidth: 50
+                                                    onClicked: colorDialog.open()
+                                                }
+                                            }
+
+                                            ColorDialog {
+                                                id: colorDialog
+                                                title: colorRowRoot.label
+                                                // Bind directly to the live theme color so the dialog always reflects current state
+                                                selectedColor: themeManager.readTheme(colorRowRoot.key)
+                                                options: ColorDialog.ShowAlphaChannel
+
+                                                onAccepted: {
+                                                    const selStr = themeManager.colorToString(selectedColor);
+                                                    themeManagerSettings.setColor(colorRowRoot.key, selStr);
+                                                    Theme.applyColors(themeManagerSettings.customColors);
+                                                }
                                             }
                                         }
-                                        onEditingFinished: {
-                                            if (text && text.length > 0) {
-                                                // Do not assign to currentColorStr to preserve its binding to Theme
-                                                themeManagerSettings.setColor(colorRowRoot.key, text);
-                                                Theme.applyColors(themeManagerSettings.customColors);
-                                            }
-                                        }
-                                        background: Rectangle {
-                                            implicitWidth: 0
-                                            radius: 4
-                                            color: Theme.controlBackgroundColor
-                                            border.color: Theme.controlBorderColor
-                                        }
-                                    }
-
-                                    Button {
-                                        id: pickButton
-                                        text: "Pick"
-                                        Layout.preferredWidth: 50
-                                        onClicked: colorDialog.open()
-                                    }
-                                }
-
-                                ColorDialog {
-                                    id: colorDialog
-                                    title: colorRowRoot.label
-                                    // Bind directly to the live theme color so the dialog always reflects current state
-                                    selectedColor: themeManager.readTheme(colorRowRoot.key)
-                                    options: ColorDialog.ShowAlphaChannel
-
-                                    onAccepted: {
-                                        const selStr = themeManager.colorToString(selectedColor);
-                                        themeManagerSettings.setColor(colorRowRoot.key, selStr);
-                                        Theme.applyColors(themeManagerSettings.customColors);
                                     }
                                 }
                             }
