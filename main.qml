@@ -17,9 +17,9 @@ Item {
         id: multiplierSettings
         property real selectedMultiplier: 1.0
         property int selectedMultiplierIndex: 2
-        property var showCrosshairOverlay: true
-        property bool enableThemeManager: false
-        property bool showToolbarButton: true
+        property var showCrosshairOverlay: false
+        property bool enableThemeManager: true
+        property bool showToolbarButton: false
     }
 
     property var mainWindow: iface.mainWindow()
