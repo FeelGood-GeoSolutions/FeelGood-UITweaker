@@ -126,77 +126,144 @@ Item {
     Dialog {
         id: layerTextSizeSettings
         modal: true
-        visible: false
-        font: Theme.defaultFont
-        title: qsTr("FeelGood UI Tweaker Settings")
+    visible: false
+    font: Theme.defaultFont
+    title: ""
+        background: Rectangle {
+            color: Theme.mainBackgroundColor
+            radius: 0
+            border.color: Theme.controlBorderColor
+        }
 
         x: (mainWindow.width - width) / 2
         y: (mainWindow.height - height) / 2
 
-        contentItem: ScrollView {
-            id: settingsScroll
-            clip: true
-            ScrollBar.vertical.policy: ScrollBar.AsNeeded
-            ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
+        contentItem: ColumnLayout {
+            anchors.fill: parent
+            anchors.margins: 12
+            spacing: 12
 
-            ColumnLayout {
-                id: settingsContent
-                width: settingsScroll.availableWidth
-                spacing: 10
+            Rectangle {
+                id: settingsHeader
+                Layout.fillWidth: true
+                Layout.leftMargin: -12
+                Layout.rightMargin: -12
+                Layout.topMargin: -12
+                implicitHeight: 48
+                radius: 0
+                color: Theme.mainColor
 
-                Label {
-                    id: labelSelection
-                    wrapMode: Text.Wrap
-                    text: qsTr("Layer text size settings")
-                    font: Theme.defaultFont
-                }
+                RowLayout {
+                    id: settingsHeaderRow
+                    anchors.fill: parent
+                    anchors.leftMargin: 8
+                    anchors.rightMargin: 8
+                    anchors.topMargin: 4
+                    anchors.bottomMargin: 4
+                    spacing: 8
+                    property int buttonWidth: 48
+                    property int buttonHeight: 40
 
-                ComboBox {
-                    id: comboBoxMultipliers
-                    Layout.fillWidth: true
-                    currentIndex: 2  // Default to 1.0 (index 2 in the model array)
+                    ToolButton {
+                        id: settingsBackButton
+                        Layout.preferredWidth: settingsHeaderRow.buttonWidth
+                        Layout.preferredHeight: settingsHeaderRow.buttonHeight
+                        display: AbstractButton.IconOnly
+                        Accessible.name: qsTr("Back")
+                        icon.source: "arrow_left.svg"
+                        icon.width: 24
+                        icon.height: 24
+                        icon.color: Theme.light
+                        background: Rectangle { color: "transparent" }
+                        onClicked: layerTextSizeSettings.accept()
+                    }
 
-                    model: [0.5, 0.75, 1.0, 1.25, 1.5, 2.0, 2.5, 3.0]
-                }
+                    Label {
+                        id: settingsHeaderTitle
+                        text: qsTr("FeelGood UI Tweaker Settings")
+                        Layout.fillWidth: true
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                        font.pixelSize: 18
+                        font.bold: true
+                        color: Theme.light
+                        elide: Text.ElideRight
+                    }
 
-                CheckBox {
-                    id: crosshairOverlayCheckbox
-                    text: qsTr("Show Crosshair Overlay")
-                    checked: multiplierSettings.showCrosshairOverlay
-                    font: Theme.defaultFont
-                    onToggled: {
-                        multiplierSettings.showCrosshairOverlay = checked;
-                        customCrosshair.visible = multiplierSettings.showCrosshairOverlay && projectInfo.stateMode === "digitize";
+                    Item {
+                        Layout.preferredWidth: settingsHeaderRow.buttonWidth
+                        Layout.preferredHeight: 1
                     }
                 }
+            }
 
-                CheckBox {
-                    id: themeManagerCheckbox
-                    text: qsTr("Enable Theme Manager")
-                    checked: multiplierSettings.enableThemeManager
-                    font: Theme.defaultFont
-                    onToggled: {
-                        multiplierSettings.enableThemeManager = checked;
+            ScrollView {
+                id: settingsScroll
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                clip: true
+                ScrollBar.vertical.policy: ScrollBar.AsNeeded
+                ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
+
+                ColumnLayout {
+                    id: settingsContent
+                    width: settingsScroll.availableWidth
+                    spacing: 12
+
+                    Label {
+                        id: labelSelection
+                        wrapMode: Text.Wrap
+                        text: qsTr("Layer text size settings")
+                        font: Theme.defaultFont
                     }
-                }
 
-                CheckBox {
-                    id: toolbarButtonCheckbox
-                    text: qsTr("Show toolbar button")
-                    checked: multiplierSettings.showToolbarButton
-                    font: Theme.defaultFont
-                    onToggled: {
-                        multiplierSettings.showToolbarButton = checked;
-                        makeItPinkButton.visible = checked;
+                    ComboBox {
+                        id: comboBoxMultipliers
+                        Layout.fillWidth: true
+                        currentIndex: 2  // Default to 1.0 (index 2 in the model array)
+
+                        model: [0.5, 0.75, 1.0, 1.25, 1.5, 2.0, 2.5, 3.0]
                     }
-                }
 
-                Label {
-                    text: qsTr("Note: You can always access these settings through the plugin manager in Settings.")
-                    font: Theme.defaultFont
-                    wrapMode: Text.Wrap
-                    color: Theme.secondaryTextColor
-                    Layout.fillWidth: true
+                    CheckBox {
+                        id: crosshairOverlayCheckbox
+                        text: qsTr("Show Crosshair Overlay")
+                        checked: multiplierSettings.showCrosshairOverlay
+                        font: Theme.defaultFont
+                        onToggled: {
+                            multiplierSettings.showCrosshairOverlay = checked;
+                            customCrosshair.visible = multiplierSettings.showCrosshairOverlay && projectInfo.stateMode === "digitize";
+                        }
+                    }
+
+                    CheckBox {
+                        id: themeManagerCheckbox
+                        text: qsTr("Enable Theme Manager")
+                        checked: multiplierSettings.enableThemeManager
+                        font: Theme.defaultFont
+                        onToggled: {
+                            multiplierSettings.enableThemeManager = checked;
+                        }
+                    }
+
+                    CheckBox {
+                        id: toolbarButtonCheckbox
+                        text: qsTr("Show toolbar button")
+                        checked: multiplierSettings.showToolbarButton
+                        font: Theme.defaultFont
+                        onToggled: {
+                            multiplierSettings.showToolbarButton = checked;
+                            makeItPinkButton.visible = checked;
+                        }
+                    }
+
+                    Label {
+                        text: qsTr("Note: You can always access these settings through the plugin manager in Settings.")
+                        font: Theme.defaultFont
+                        wrapMode: Text.Wrap
+                        color: Theme.secondaryTextColor
+                        Layout.fillWidth: true
+                    }
                 }
             }
         }
@@ -221,12 +288,6 @@ Item {
 
             Item {
                 Layout.fillWidth: true
-            }
-
-            DialogButtonBox {
-                Layout.alignment: Qt.AlignRight
-                standardButtons: DialogButtonBox.Ok
-                onAccepted: layerTextSizeSettings.accept()
             }
         }
 

@@ -1095,7 +1095,7 @@ Item {
 
         background: Rectangle {
             color: Theme.mainBackgroundColor
-            radius: 8
+            radius: 0
             border.color: Theme.controlBorderColor
         }
 
@@ -1107,127 +1107,103 @@ Item {
             ColumnLayout {
                 id: header
                 Layout.fillWidth: true
-                spacing: 6
+                spacing: 12
+                Layout.leftMargin: -12
+                Layout.rightMargin: -12
+                Layout.topMargin: -12
 
-                property bool wrap: (oneLineHeader.implicitWidth > width)
-
-                RowLayout {
-                    id: oneLineHeader
+                Rectangle {
+                    id: headerBar
                     Layout.fillWidth: true
-                    spacing: 8
-                    visible: !header.wrap
-                    Layout.preferredHeight: visible ? implicitHeight : 0
-
-                    Label {
-                        id: titleOneLine
-                        text: "Theme Colors"
-                        font.pixelSize: 18
-                        color: Theme.mainTextColor
-                        Layout.fillWidth: true
-                    }
-
-                    Label {
-                        visible: !header.wrap
-                        text: qsTr("Base theme")
-                        color: Theme.secondaryTextColor
-                    }
-
-                    Button {
-                        text: "Close"
-                        onClicked: themeDialog.close()
-                    }
+                    implicitHeight: 48
+                    radius: 0
+                    color: Theme.mainColor
 
                     RowLayout {
-                        id: buttonsOneLine
-                        spacing: 6
-                        ComboBox {
-                            id: appearanceComboInline
-                            visible: !header.wrap
-                            Layout.preferredWidth: 140
-                            model: themeManager.appearanceOptions
-                            textRole: "label"
-                            valueRole: "value"
-                            currentIndex: themeManager.appearanceIndex(themeManager.selectedAppearance)
-                            onActivated: function(idx) {
-                                if (idx >= 0 && idx < model.length)
-                                    themeManager.changeAppearance(model[idx].value);
-                            }
+                        anchors.fill: parent
+                        anchors.leftMargin: 8
+                        anchors.rightMargin: 8
+                        anchors.topMargin: 4
+                        anchors.bottomMargin: 4
+                        spacing: 8
+
+                        ToolButton {
+                            id: backButton
+                            Layout.preferredWidth: 48
+                            Layout.preferredHeight: 40
+                            display: AbstractButton.IconOnly
+                            Accessible.name: qsTr("Back")
+                            onClicked: themeDialog.close()
+                            icon.source: "arrow_left.svg"
+                            icon.width: 24
+                            icon.height: 24
+                            icon.color: Theme.light
+                            background: Rectangle { color: "transparent" }
                         }
-                        Button {
-                            text: "Import/Export"
-                            enabled: false
-                            visible: false
-                            onClicked: {}
+
+                        Label {
+                            id: headerTitle
+                            text: qsTr("Theme Colors")
+                            font.pixelSize: 18
+                            font.bold: true
+                            color: Theme.light
+                            Layout.fillWidth: true
+                            horizontalAlignment: Text.AlignHCenter
+                            verticalAlignment: Text.AlignVCenter
+                            elide: Text.ElideRight
                         }
-                        Button {
-                            text: "Reset"
+
+                        ToolButton {
+                            id: resetButton
+                            Layout.preferredWidth: 48
+                            Layout.preferredHeight: 40
+                            display: AbstractButton.IconOnly
+                            Accessible.name: qsTr("Reset colors")
                             onClicked: {
                                 Theme.applyColors(themeManager.systemDefaultColors);
                                 themeManagerSettings.customColors = {};
                             }
+                            icon.source: "reset_settings.svg"
+                            icon.width: 24
+                            icon.height: 24
+                            icon.color: Theme.light
+                            background: Rectangle { color: "transparent" }
                         }
                     }
                 }
 
-                ColumnLayout {
-                    id: wrappedHeader
+                RowLayout {
+                    id: appearanceRow
                     Layout.fillWidth: true
-                    spacing: 6
-                    visible: header.wrap
-                    Layout.preferredHeight: visible ? implicitHeight : 0
+                    spacing: 8
+                    Layout.leftMargin: 12
+                    Layout.rightMargin: 12
+                    Layout.bottomMargin: 0
+                    Layout.topMargin: 0
 
                     Label {
-                        id: titleWrapped
-                        text: "Theme Colors"
-                        color: Theme.mainTextColor
-                        Layout.fillWidth: true
+                        text: qsTr("Base theme")
+                        color: Theme.secondaryTextColor
                     }
+
+                    ComboBox {
+                        id: appearanceCombo
+                        Layout.fillWidth: true
+                        model: themeManager.appearanceOptions
+                        textRole: "label"
+                        valueRole: "value"
+                        currentIndex: themeManager.appearanceIndex(themeManager.selectedAppearance)
+                        onActivated: function(idx) {
+                            if (idx >= 0 && idx < model.length)
+                                themeManager.changeAppearance(model[idx].value);
+                        }
+                    }
+
                     Button {
-                        text: "Close"
-                        onClicked: themeDialog.close()
-                    }
-                    Flow {
-                        id: buttonsWrapped
-                        spacing: 6
-                        Layout.fillWidth: true
-                        // Let buttons wrap onto additional lines when space is tight
-                        flow: Flow.LeftToRight
-
-                        ColumnLayout {
-                            Layout.fillWidth: true
-                            visible: header.wrap
-
-                            Label {
-                                text: qsTr("Base theme")
-                                color: Theme.secondaryTextColor
-                            }
-                            ComboBox {
-                                id: appearanceComboWrapped
-                                Layout.fillWidth: true
-                                model: themeManager.appearanceOptions
-                                textRole: "label"
-                                valueRole: "value"
-                                currentIndex: themeManager.appearanceIndex(themeManager.selectedAppearance)
-                                onActivated: function(idx) {
-                                    if (idx >= 0 && idx < model.length)
-                                        themeManager.changeAppearance(model[idx].value);
-                                }
-                            }
-                        }
-
-                        Button {
-                            text: "Import/Export"
-                            enabled: false
-                            visible: false
-                            onClicked: {}
-                        }
-                        Button {
-                            text: "Reset"
-                            onClicked: {
-                                Theme.applyColors(themeManager.systemDefaultColors);
-                                themeManagerSettings.customColors = {};
-                            }
-                        }
+                        text: "Import/Export"
+                        enabled: false
+                        visible: false
+                        onClicked: {}
                     }
                 }
             }
@@ -1351,8 +1327,11 @@ Item {
 
                                                 Button {
                                                     id: pickButton
-                                                    text: "Pick"
-                                                    Layout.preferredWidth: 50
+                                                    icon.source: "palette_icon.svg"
+                                                    icon.width: 18
+                                                    icon.height: 18
+                                                    display: AbstractButton.IconOnly
+                                                    Accessible.name: qsTr("Pick color")
                                                     onClicked: colorDialog.open()
                                                 }
                                             }
