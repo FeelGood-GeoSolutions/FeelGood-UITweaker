@@ -18,6 +18,8 @@ Item {
         property real selectedMultiplier: 1.0
         property int selectedMultiplierIndex: 2
         property var showCrosshairOverlay: true
+        property bool enableThemeManager: false
+        property bool showToolbarButton: true
     }
 
     property var mainWindow: iface.mainWindow()
@@ -30,15 +32,16 @@ Item {
 
     property point crosshairPos: Qt.point(width / 2, height / 2)
 
-    // Theme Manager instance (hosts the color editing UI popup)
-    ThemeManager {
-        id: themeManager
-        // Provide size hints so the embedded Popup can size relative to its parent
-        width: plugin.mainWindow ? plugin.mainWindow.width : 0
-        height: plugin.mainWindow ? plugin.mainWindow.height : 0
+    Loader {
+        id: themeManagerLoader
+        active: multiplierSettings.enableThemeManager
+        sourceComponent: ThemeManager {
+            id: themeManager
+            width: plugin.mainWindow ? plugin.mainWindow.width : 0
+            height: plugin.mainWindow ? plugin.mainWindow.height : 0
+        }
     }
 
-    // This is the key - track the displayPosition from coordinateLocator
     property point displayPosition: coordinateLocator ? coordinateLocator.displayPosition : Qt.point(width / 2, height / 2)
 
     function recalculateLayerFontSize() {
@@ -65,7 +68,6 @@ Item {
 
     Component.onCompleted: {
         iface.addItemToPluginsToolbar(makeItPinkButton);
-        iface.addItemToPluginsToolbar(themeUiButton);
 
         mapCanvas = iface.mapCanvas();
         if (mapCanvas) {
@@ -85,6 +87,9 @@ Item {
         layerTextSizeSettings.parent = iface.mainWindow().contentItem;
         comboBoxMultipliers.currentIndex = multiplierSettings.selectedMultiplierIndex;
         crosshairOverlayCheckbox.checked = multiplierSettings.showCrosshairOverlay;
+        themeManagerCheckbox.checked = multiplierSettings.enableThemeManager;
+        toolbarButtonCheckbox.checked = multiplierSettings.showToolbarButton;
+        makeItPinkButton.visible = multiplierSettings.showToolbarButton;
         plugin.recalculateLayerFontSize();
     }
 
@@ -123,45 +128,112 @@ Item {
         modal: true
         visible: false
         font: Theme.defaultFont
-        standardButtons: Dialog.Ok | Dialog.Cancel
-        title: qsTr("Adjust Layer Text Size")
+        title: qsTr("FeelGood UI Tweaker Settings")
 
         x: (mainWindow.width - width) / 2
         y: (mainWindow.height - height) / 2
 
-        ColumnLayout {
-            spacing: 10
+        contentItem: ScrollView {
+            id: settingsScroll
+            clip: true
+            ScrollBar.vertical.policy: ScrollBar.AsNeeded
+            ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
 
-            Label {
-                id: labelSelection
-                wrapMode: Text.Wrap
-                text: qsTr("Layer text size settings")
-                font: Theme.defaultFont
+            ColumnLayout {
+                id: settingsContent
+                width: settingsScroll.availableWidth
+                spacing: 10
+
+                Label {
+                    id: labelSelection
+                    wrapMode: Text.Wrap
+                    text: qsTr("Layer text size settings")
+                    font: Theme.defaultFont
+                }
+
+                ComboBox {
+                    id: comboBoxMultipliers
+                    Layout.fillWidth: true
+                    currentIndex: 2  // Default to 1.0 (index 2 in the model array)
+
+                    model: [0.5, 0.75, 1.0, 1.25, 1.5, 2.0, 2.5, 3.0]
+                }
+
+                CheckBox {
+                    id: crosshairOverlayCheckbox
+                    text: qsTr("Show Crosshair Overlay")
+                    checked: multiplierSettings.showCrosshairOverlay
+                    font: Theme.defaultFont
+                    onToggled: {
+                        multiplierSettings.showCrosshairOverlay = checked;
+                        customCrosshair.visible = multiplierSettings.showCrosshairOverlay && projectInfo.stateMode === "digitize";
+                    }
+                }
+
+                CheckBox {
+                    id: themeManagerCheckbox
+                    text: qsTr("Enable Theme Manager")
+                    checked: multiplierSettings.enableThemeManager
+                    font: Theme.defaultFont
+                    onToggled: {
+                        multiplierSettings.enableThemeManager = checked;
+                    }
+                }
+
+                CheckBox {
+                    id: toolbarButtonCheckbox
+                    text: qsTr("Show toolbar button")
+                    checked: multiplierSettings.showToolbarButton
+                    font: Theme.defaultFont
+                    onToggled: {
+                        multiplierSettings.showToolbarButton = checked;
+                        makeItPinkButton.visible = checked;
+                    }
+                }
+
+                Label {
+                    text: qsTr("Note: You can always access these settings through the plugin manager in Settings.")
+                    font: Theme.defaultFont
+                    wrapMode: Text.Wrap
+                    color: Theme.secondaryTextColor
+                    Layout.fillWidth: true
+                }
+            }
+        }
+
+        footer: RowLayout {
+            Layout.fillWidth: true
+            spacing: 8
+
+            QfToolButton {
+                id: themeUiButton
+                iconSource: 'palette_icon.svg'
+                iconColor: Theme.mainColor
+                bgcolor: '#00ffffff'
+                visible: multiplierSettings.enableThemeManager
+                round: true
+
+                onClicked: {
+                    if (themeManagerLoader.item && themeManagerLoader.item.openThemeDialog)
+                        themeManagerLoader.item.openThemeDialog();
+                }
             }
 
-            ComboBox {
-                id: comboBoxMultipliers
+            Item {
                 Layout.fillWidth: true
-                currentIndex: 2  // Default to 1.0 (index 2 in the model array)
-
-                model: [0.5, 0.75, 1.0, 1.25, 1.5, 2.0, 2.5, 3.0]
             }
 
-            CheckBox {
-                id: crosshairOverlayCheckbox
-                text: qsTr("Show Crosshair Overlay")
-                checked: multiplierSettings.showCrosshairOverlay
-                font: Theme.defaultFont
+            DialogButtonBox {
+                Layout.alignment: Qt.AlignRight
+                standardButtons: DialogButtonBox.Ok
+                onAccepted: layerTextSizeSettings.accept()
             }
         }
 
         onAccepted: {
             multiplierSettings.selectedMultiplier = comboBoxMultipliers.currentText;
             multiplierSettings.selectedMultiplierIndex = comboBoxMultipliers.currentIndex;
-            multiplierSettings.showCrosshairOverlay = crosshairOverlayCheckbox.checked;
             plugin.recalculateLayerFontSize();
-
-            customCrosshair.visible = multiplierSettings.showCrosshairOverlay && projectInfo.stateMode === "digitize";
         }
     }
 
@@ -193,24 +265,13 @@ Item {
     QfToolButton {
         id: makeItPinkButton
         iconSource: 'icon.svg'
-        iconColor: Theme.white
+        iconColor: Theme.mainColor
         bgcolor: Theme.darkGray
         round: true
 
         onClicked: {
             layerTextSizeSettings.open();
             return;
-        }
-    }
-
-    QfToolButton {
-        id: themeUiButton
-        iconSource: 'icon.svg'
-        iconColor: Theme.accentColor
-        bgcolor: Theme.controlBackgroundColor
-        round: true
-        onClicked: {
-            if (themeManager && themeManager.openThemeDialog) themeManager.openThemeDialog();
         }
     }
 

@@ -14,6 +14,12 @@ Item {
 
     property bool systemDefaultDarkTheme: false
     property var systemDefaultColors: {}
+    property string selectedAppearance: "system"
+    property var appearanceOptions: [
+        { value: "system", label: qsTr("System") },
+        { value: "light", label: qsTr("Light") },
+        { value: "dark", label: qsTr("Dark") }
+    ]
 
     property var exposedColorConfig: ({
             // Brand
@@ -866,6 +872,7 @@ Item {
         id: themeManagerSettings
         property bool useDarkTheme: false
         property var customColors: {}
+        property string appearanceSelection: "system"
 
         function setColor(name, value) {
             var c = Object.assign({}, customColors);
@@ -914,9 +921,63 @@ Item {
         };
     }
 
+    function hasThemeColor(key) {
+        try {
+            if (!Theme)
+                return false;
+            if (typeof Theme.hasOwnProperty === "function")
+                return Theme.hasOwnProperty(key) && Theme[key] !== undefined;
+            return Theme[key] !== undefined;
+        } catch (e) {
+            return false;
+        }
+    }
+
+    function collectThemeColors() {
+        var cfg = exposedColorConfig || {};
+        var colors = {};
+        for (var key in cfg) {
+            if (!cfg.hasOwnProperty(key))
+                continue;
+            if (!hasThemeColor(key))
+                continue;
+            colors[key] = colorToString(readTheme(key));
+        }
+        return colors;
+    }
+
+    function appearanceIndex(value) {
+        var opts = appearanceOptions || [];
+        for (var i = 0; i < opts.length; ++i) {
+            if (opts[i] && opts[i].value === value)
+                return i;
+        }
+        return 0;
+    }
+
+    function applyBaseAppearance(value, persist, applyCustomColors) {
+        var base = value || "system";
+        var shouldApplyCustomColors = applyCustomColors !== false;
+        try {
+            Theme.applyAppearance(undefined, base);
+            selectedAppearance = base;
+            systemDefaultColors = collectThemeColors();
+            if (shouldApplyCustomColors && themeManagerSettings.customColors && Object.keys(themeManagerSettings.customColors).length > 0)
+                Theme.applyColors(themeManagerSettings.customColors);
+            if (persist === true)
+                themeManagerSettings.appearanceSelection = base;
+        } catch (eAppearance) {
+            themeManager.log("Failed to apply base appearance: " + eAppearance);
+        }
+    }
+
+    function changeAppearance(value) {
+        applyBaseAppearance(value, true);
+    }
+
     property var colorKeys: Object.keys(exposedColorConfig).filter(function (k) {
         var e = exposedColorConfig[k];
-        return e && e.expose === true;
+        return e && e.expose === true && themeManager.hasThemeColor(k);
     })
 
     property var colorGroups: {
@@ -964,12 +1025,14 @@ Item {
             themeDialog.parent = iface.mainWindow().contentItem;
         } catch (e) {}
 
-        var c = Object.assign({}, systemDefaultColors);
-        for ( var k in exposedColorConfig ) {
-            var themeColor = readTheme(k);
-            c[k] = colorToString(themeColor);
-        }
-        systemDefaultColors = c; // triggers colorsChanged, bindings re-evaluate
+        selectedAppearance = themeManagerSettings.appearanceSelection || "system";
+        applyBaseAppearance(selectedAppearance, false);
+    }
+
+    Component.onDestruction: {
+        if (themeDialog && themeDialog.visible)
+            themeDialog.close();
+        applyBaseAppearance(themeManagerSettings.appearanceSelection, false, false);
     }
 
     Popup {
@@ -1018,14 +1081,33 @@ Item {
                         Layout.fillWidth: true
                     }
 
+                    Label {
+                        visible: !header.wrap
+                        text: qsTr("Base theme")
+                        color: Theme.secondaryTextColor
+                    }
+
                     Button {
-                        text: "X"
+                        text: "Close"
                         onClicked: themeDialog.close()
                     }
 
                     RowLayout {
                         id: buttonsOneLine
                         spacing: 6
+                        ComboBox {
+                            id: appearanceComboInline
+                            visible: !header.wrap
+                            Layout.preferredWidth: 140
+                            model: themeManager.appearanceOptions
+                            textRole: "label"
+                            valueRole: "value"
+                            currentIndex: themeManager.appearanceIndex(themeManager.selectedAppearance)
+                            onActivated: function(idx) {
+                                if (idx >= 0 && idx < model.length)
+                                    themeManager.changeAppearance(model[idx].value);
+                            }
+                        }
                         Button {
                             text: "Import/Export"
                             enabled: false
@@ -1056,7 +1138,7 @@ Item {
                         Layout.fillWidth: true
                     }
                     Button {
-                        text: "X"
+                        text: "Close"
                         onClicked: themeDialog.close()
                     }
                     Flow {
@@ -1065,6 +1147,28 @@ Item {
                         Layout.fillWidth: true
                         // Let buttons wrap onto additional lines when space is tight
                         flow: Flow.LeftToRight
+
+                        ColumnLayout {
+                            Layout.fillWidth: true
+                            visible: header.wrap
+
+                            Label {
+                                text: qsTr("Base theme")
+                                color: Theme.secondaryTextColor
+                            }
+                            ComboBox {
+                                id: appearanceComboWrapped
+                                Layout.fillWidth: true
+                                model: themeManager.appearanceOptions
+                                textRole: "label"
+                                valueRole: "value"
+                                currentIndex: themeManager.appearanceIndex(themeManager.selectedAppearance)
+                                onActivated: function(idx) {
+                                    if (idx >= 0 && idx < model.length)
+                                        themeManager.changeAppearance(model[idx].value);
+                                }
+                            }
+                        }
 
                         Button {
                             text: "Import/Export"
