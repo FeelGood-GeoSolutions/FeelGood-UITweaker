@@ -872,7 +872,51 @@ Item {
         id: themeManagerSettings
         property bool useDarkTheme: false
         property var customColors: {}
-        property string appearanceSelection: "system"
+        property var customColors3144: {
+            "mainColor": "#134392",
+            "mainOverlayColor": "#FCF8F3",
+            "accentColor": "#4F98CB",
+            "accentLightColor": "#9ECFE5",
+            "mainBackgroundColor": "#FCF8F3",
+            "mainBackgroundColorSemiOpaque": "#FCF2E7",
+            "sensorBackgroundColor": "#E2D5C7",
+            "mainTextColor": "#5C453A",
+            "textDisabledColor": "#C6C3BF",
+            "secondaryTextColor": "#A9A8A4",
+            "buttonTextColor": "#FCF8F3",
+            "controlBackgroundColor": "#E2D5C7",
+            "controlBackgroundAlternateColor": "#E2D5C7",
+            "controlBackgroundDisabledColor": "#A9A8A4",
+            "controlBorderColor": "#C6C3BF",
+            "toolButtonColor": "#E2D5C7",
+            "scrollBarBackgroundColor": "#E2D5C7",
+            "errorColor": "#D97369",
+            "warningColor": "#F0D98E",
+            "cloudColor": "#4F98CB",
+            "positionColor": "#4F98CB",
+            "positionColorSemiOpaque": "#9ECFE5",
+            "positionBackgroundColor": "#D1E3E8",
+            "darkPositionColor": "#99BDC6",
+            "darkPositionColorSemiOpaque": "#99BDC6",
+            "accuracyBad": "#D97369",
+            "accuracyTolerated": "#F0D98E",
+            "accuracyExcellent": "#6D8D66",
+            "navigationColor": "#BB9F7C",
+            "navigationColorSemiOpaque": "#BFB1A1",
+            "navigationBackgroundColor": "#E2D5C7",
+            "bookmarkDefault": "#8AA37C",
+            "bookmarkOrange": "#E2BE59",
+            "bookmarkRed": "#BF7571",
+            "bookmarkBlue": "#638EA5",
+            "vertexColor": "#831E11",
+            "vertexColorSemiOpaque": "#A07773",
+            "vertexSelectedColor": "#134392",
+            "vertexSelectedColorSemiOpaque": "#7B889B",
+            "vertexNewColor": "#7B9B6F",
+            "vertexNewColorSemiOpaque": "#A8B5A3",
+            "processingPreview": "#958674"
+        }
+        property string appearanceSelection: "light"
 
         function setColor(name, value) {
             var c = Object.assign({}, customColors);
@@ -1026,6 +1070,7 @@ Item {
         } catch (e) {}
 
         selectedAppearance = themeManagerSettings.appearanceSelection || "system";
+        themeManagerSettings.customColors = themeManagerSettings.customColors3144;
         applyBaseAppearance(selectedAppearance, false);
     }
 

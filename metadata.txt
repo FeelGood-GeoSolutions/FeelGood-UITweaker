@@ -1,5 +1,5 @@
 [general]
-name=FeelGood UITweaker
+name=FeelGood UITweaker 3144
 description=Adjust layer text size and add a more visible digitize cursor. 
 author=FeelGood GeoSolutions
 icon=icon.svg
