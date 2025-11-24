@@ -56,8 +56,10 @@ Item {
 
         for (var i = 0; i < layerElements.length; i++) {
             var element = layerElements[i];
-            let label = element.children[2].children[1].children[2];
-            label.font.pointSize = pointSize;
+            let label = element?.children[2]?.children[1]?.children[2];
+            if (label && label.font) {
+                label.font.pointSize = pointSize;
+            }
         }
     }
     // Update crosshair position when displayPosition changes
