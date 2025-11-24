@@ -1,6 +1,6 @@
 [general]
-name=FeelGood UITweaker 3144
-description=Adjust layer text size and add a more visible digitize cursor. 
+name=FeelGood UITweaker
+description=Allows users to adjust and customize select UI elements to improve usability and accessibility.
 author=FeelGood GeoSolutions
 icon=icon.svg
 version=0.4
