@@ -1,7 +1,13 @@
 # FeelGood UITweaker - QField Plugin
 
 <img src="https://nx42125.your-storageshare.de/apps/files_sharing/publicpreview/cDd4YT2gZt7rF2i?file=/&fileId=191176&x=1920&y=1080&a=true&etag=04f4cd785b4178399cd12260d4f92719">
-Adjust layer text size and add a more visible digitize cursor. 🎯
+Allows users to adjust and customize select UI elements to improve usability and accessibility. 🎯
+ 
+### Included Features
+- Adjust layer text size
+- Overlay a more visible digitizing cursor
+- Add a Theme Manager that allows for UI color customization (read more below)
+
 Stay tuned for more!
 
 
@@ -16,10 +22,26 @@ Stay tuned for more!
 
 ## Usage
 
-<img src="https://nx42125.your-storageshare.de/apps/files_sharing/publicpreview/PKZZ4yB33JAckw4?file=/&fileId=191173&x=1920&y=1080&a=true&etag=26377ff6550ad51c445ce1159fc2b989">
-Tap the button added by the plugin to open the plugin settings.
-Here, you can adjust the layer text scaling to your liking and toggle the custom digitizing cursor.
+<img src="https://nx42125.your-storageshare.de/apps/files_sharing/publicpreview/PKZZ4yB33JAckw4?file=/&fileId=191173&x=1920&y=1080&a=true&etag=26377ff6550ad51c445ce1159fc2b989" alt="Plugin Settings">
 
+Tap the button added by the plugin to open its settings.
+Here, you can adjust the layer text scaling and toggle the custom digitizing cursor.
+
+The button can be disabled in the plugin’s settings. If disabled, the settings remain accessible through the plugin manager.
+
+### Theme Manager
+
+The Theme Manager can be enabled in the plugin settings.
+
+Once enabled, a color-palette icon appears in the bottom-left corner of the settings window. Select it to open the Theme Manager.
+
+In this window, you can adjust the QField theme’s color values to your liking. All colors support transparency.
+
+Use the Button in the top right to reset custom colors back to QField defaults.
+
+Hint: Some colors, mainly gray tones, change based on the base theme selected (dark/light). Try changing it if something doesn't look quiet right.
+
+<img src="https://nx42125.your-storageshare.de/apps/files_sharing/publicpreview/pJfDg9S5xtod4Pb?x=1919&y=1199&a=true" alt="Theme Manager">
 
 ## Custom Plugin Development
 
